@@ -1,0 +1,924 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Manrope", sans-serif;
+    background-color: #F6F7F8;
+}
+
+.hidden {
+    display: none;
+}
+
+.container{
+    width: 95%;
+    max-width: 1500px;
+    margin: auto;
+    height: 100%;
+}
+
+.drInfoRes{
+    justify-content: center;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 70px;
+    width: 98%;
+    max-width: 1500px;
+    margin: auto;
+    position: relative;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+.navLinks {
+    display: flex;
+    gap: 20px;
+}
+
+.navLinks .link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    padding: 11px;
+    font-weight: bold;
+    border-radius: 41px;
+    transition: all 0.15s ease;
+}
+
+.navLinks .link:hover {
+    background-color: #01F0D0;
+}
+
+.navLinks .link img {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+}
+
+.navLinks .link.active {
+    background-color: #01F0D0;
+}
+
+.drNav {
+    display: flex;
+    align-items: center;
+}
+
+.drinfo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-right: #333 1px;
+}
+
+.docInfo {
+    padding-right: 15px;
+    border-right: 1px solid #e4e4e4;
+}
+
+.docInfo h4 {
+    font-size: 14px;
+    margin-bottom: 2px;
+}
+
+.docInfo h5 {
+    font-size: 12px;
+    color: gray;
+}
+
+.drImg {
+    cursor: pointer;
+    width: 44px;
+    height: 44px;
+}
+
+.options {
+    cursor: pointer;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    padding: 3px;
+    transition: all 0.15s ease;
+}
+
+.options:hover {
+    background-color: #d8d8d8;
+}
+
+
+
+.hamburger-menu {
+    display: none;
+    margin-left: auto; /* This pushes it to the end */
+    cursor: pointer;
+}
+
+.hamburger {
+    max-height: 28px;
+    max-width: 28px;
+    display: none;
+    cursor: pointer;
+}
+
+.resNavLinks{
+    position: absolute;
+    bottom: -100;
+    background-color: #fff;
+    width: 96%;
+    margin: auto;
+    height: 50vh;
+    z-index: 1;
+    border-radius: 20px;
+    transition: all 0.3s ease-in-out;
+    overflow-y: auto;
+}
+
+.resNavLinks > a {
+    text-align: center;
+    margin: auto;
+    display: block;
+}
+
+
+.hamburger{
+    display: none;
+    cursor: pointer;
+}
+
+.bar{
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background: white;
+}
+
+
+/*
+/////////////////////////////////////////////////////////////////////////////////////////////////
+*/
+
+
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #fff; 
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 98%;
+    max-width: 1500px;
+    margin: auto;
+    border-radius: 70px;
+}
+
+.navbar{
+    margin: 18px 18px 0px 18px;
+}
+
+.logo img {
+    height: 40px; 
+    cursor: pointer;
+}
+
+.navLinks {
+    display: flex;
+    gap: 20px; 
+}
+
+.content{
+    display: flex;
+    max-width: 1500px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.link:hover{
+    background-color: #01F0D0;
+}
+
+.link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    padding: 11px;
+    font-weight: bold;
+    border-radius: 41px;
+    transition: all 0.15s ease;
+}
+
+.active{
+    background-color: #01F0D0;
+}
+
+.link img {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px; 
+}
+
+.drNav {
+    display: flex;
+    align-items: center;
+}
+
+.drinfo {
+    display: flex;
+    align-items: center;
+    gap: 15px; 
+    border-right: #333 1px;
+}
+
+.docInfo{
+    padding-right: 15px;
+    border-right: 1px solid #e4e4e4;
+}
+
+.docInfo h4 {
+    font-size: 14px;
+    margin-bottom: 2px;
+}
+
+.docInfo h5 {
+    font-size: 12px;
+    color: gray;
+}
+
+.drImg {
+    cursor: pointer;
+    width: 44px;
+    height: 44px;
+}
+
+.options{
+    cursor: pointer;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    padding: 3px;
+}
+
+#patSearch{
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.options:hover, #patSearch:hover{
+    background-color: #d8d8d8;
+    border-radius: 50px;
+}
+
+.patientsList {
+    width: 25%;
+    background-color: #fff;
+    border-radius: 16px;
+    padding-bottom: 10px;
+    margin-top: 25px;
+}
+
+.listpat{
+    max-height: 75vh;
+    overflow-y: scroll;
+    height: 100%;
+    margin-right: 4px;
+   
+}
+
+.listpat::-webkit-scrollbar, .table-container::-webkit-scrollbar, .dataSection::-webkit-scrollbar {
+    width: 8px; 
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+
+.listpat::-webkit-scrollbar-track, .table-container::-webkit-scrollbar-track, .dataSection::-webkit-scrollbar-track {
+    background: #f0f0f0; 
+    border-radius: 10px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1); 
+}
+
+.listpat::-webkit-scrollbar-thumb, .table-container::-webkit-scrollbar-thumb, .dataSection::-webkit-scrollbar-thumb  {
+    background: #072635; 
+    border-radius: 10px;
+    border: 2px solid #f0f0f0; 
+}
+
+.listpat::-webkit-scrollbar-thumb:hover, .table-container::-webkit-scrollbar-thumb:hover, .dataSection::-webkit-scrollbar-thumb:hover  {
+    background: #0a3d50; 
+}
+
+
+.sectionHeader{
+    
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+
+.headalign{
+    padding: 15px;
+}
+
+.sectionHeader h2 {
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.patientOption{
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 19px 16px;
+    cursor: pointer;
+    border-radius: 15px;
+    width: 100%;
+}
+
+.patientOption:hover{
+    background-color: #D8FCF7;
+    transition: all 0.15s ease;
+
+}
+
+.selected{
+    background-color: #D8FCF7;
+
+}
+
+.patientinfo{
+    display: flex;
+
+}
+
+.patientinfo img{
+    margin-right: 12px;
+    cursor: pointer;
+    max-height: 48px;
+    max-width: 48px;
+}
+
+.patientOption >img{
+    width: 25px;
+    height: 25px;
+    padding: 3px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.15s ease;
+
+    
+}
+
+.patientOption >img:hover{
+    background-color: #d8d8d8;
+}
+
+.patientinfo span h5{
+    color: #707070;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.patientinfo span h4{
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.diagnosisSection{
+    width: 45%;
+    margin-top: 25px;
+
+}
+
+.graphic{
+    width: 96%;
+    display: flex;
+    padding: 15px;
+    margin: 10px;
+    background-color: #F4F0FE;
+    border-radius: 12px;
+    height: 48%;
+}
+
+.chartHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.chartHeader h6{
+    font-weight: 500;
+    font-size: 0.7rem;
+    cursor: pointer;
+}
+
+.chartHeader h2{
+    font-size: 18px;
+}
+
+canvas{
+    display: block;
+    width: 100%;
+    max-width: 350px;
+    margin: 10px auto;
+    padding: 10px;
+    height: 100%;
+    max-height: 200px;
+}
+
+.systolic{
+    border-bottom: 1px solid #d8d8d8;
+}
+
+.dot{
+    height: 14px;
+    display: inline-block;
+    width: 14px;
+    border-radius: 50%;
+    background-color: #fff;
+    padding: 1px;
+    margin-right: 5px;
+}
+
+.center{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.infoCard{
+    padding: 10px 0px;
+}   
+
+.center h4{
+    font-size: 14px;
+}
+.infoCard h3{
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+.center h5{
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.center img{
+    margin-right: 5px;
+}
+
+.chartHeader h6 img{
+    margin-left: 5px;
+
+}
+
+.pink{
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    background-color: #E66FD2;
+}
+
+.purple{
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    background-color: #8C6FE6;
+}
+
+.chartPart{
+    width: 65%;
+    margin-right: 1.5rem;
+}
+
+.diagnosisHistory{
+    background-color: #fff;
+    border-radius: 15px;
+    height: 60vh;
+}
+
+.basicInfo {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+}
+
+.card{
+    border-radius: 15px;
+    padding: 16px;
+    width: 30%;
+}
+
+.card h4 {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.card h6 {
+font-size: 10px;
+font-weight: 400;
+
+}
+
+.card > img {
+    height: 70px;
+    width: 70px;
+    margin-bottom: 10px;
+}
+
+.lungs{
+    background-color: #E0F3FA;
+}
+
+.temperature{
+    background-color: #FFE6E9;
+}
+
+.heart{
+    background-color: #FFE6F1;
+}
+
+.detail{
+    margin-bottom: 10px;
+}
+
+.diagnosisList{
+    margin-top: 15px;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 15px;
+    height: 25vh;
+    overflow: hidden;
+    padding: 20px;
+}
+
+.table-container {
+    height: 95%;
+    border: 1px solid #ccc;
+    width: 100%;
+    border: 0px;
+    overflow-y: auto;
+    padding-bottom: 10px;
+}
+
+.listh{
+    padding: 0px;
+    margin-bottom: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border: 0px solid #dededf;
+    border-spacing: 0px;
+}
+
+tbody {   
+    height: 25vh;
+    overflow-y: auto;
+}
+
+thead {
+    position: sticky;
+    background-color: #f1f1f1;
+    top: 0;
+    z-index: 1;
+}
+
+
+   table.rounded-corners thead tr:first-child th:first-child {
+    border-top-left-radius: 24px;
+   }
+   
+   table.rounded-corners thead tr:last-child th:first-child {
+    border-bottom-left-radius: 24px;
+   }
+   
+   table.rounded-corners thead tr:first-child th:last-child {
+    border-top-right-radius: 24px;
+   }
+   
+   table.rounded-corners thead tr:last-child th:last-child {
+    border-bottom-right-radius: 24px;
+   }
+
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border: 0px solid #dededf;
+
+}
+
+.profileLabRes{
+    width: 25%;
+}
+
+.profileInfo{
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    margin-top: 15px;
+    text-align: center;
+   /* max-height: 65vh;*/
+    height: auto;
+}
+
+.profileInfoCard{
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.profileHeader h2{
+    margin-top: 15px;
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.profileHeader img{
+    height: 8rem;
+}
+
+.profileInfoCard h4{
+    font-size: 12px;
+    font-weight: 500;
+    text-align: left;
+    margin-bottom: 4px;
+}
+
+.profileInfoCard h5{
+    font-size: 12px;
+    text-align: left;
+}
+
+.profileSticker{
+    margin-right: 16px;
+    display: flex;
+    padding: 7px;
+    border-radius: 50%;
+    background-color: #f5f5f5;
+}
+
+.profileSticker img{
+    height: 30px;
+    width: 30px;
+}
+
+.profileContent{
+    margin-top: 20px;
+}
+
+.profileButton{
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+    width: 90%;
+    height: 5vh;
+    padding: 8px 35px;
+    border: 0px;
+    border-radius: 25px;
+    background-color: #01F0D0;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.2s ease;
+}
+
+.profileButton:hover{
+    background-color: #fff;
+    border: 1px solid #01F0D0;
+}
+
+.labResults{
+    width: 100%;
+    margin-top: 15px;
+    background-color: #fff;
+    border-radius: 15px;
+    height: 21vh;
+    padding: 10px;
+}
+
+.dataSection{
+    max-height: 80%;
+    overflow-y: auto;
+}
+
+.downloadData{
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    max-height: 40px;
+    align-items: center;
+    width: 100%;
+    cursor: pointer;
+}
+
+.downloadData:hover{
+    background-color: #F6F7F8;
+    border-radius: 15px;
+}
+
+.downloadData > h4{
+    font-size: 13px;
+    font-weight: 500;
+}
+
+/*
+//////////////////////////////////////////////////////////////////////////////////
+*/
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-button {
+    background-color: transparent;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.15s ease-in;
+}
+
+.dropdown-button:hover{
+    background-color: #dfd6f5;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: white;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+    min-width: 120px;
+    z-index: 10;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 8px 12px;
+    text-decoration: none;
+    color: #333;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f1f1f1;
+}
+
+@media (max-width: 1200px) {
+    .content{
+        flex-direction: row-reverse;
+        max-width: 1200px;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .patientsList{
+        max-width: 280px;
+        flex: 1;
+    }
+
+    .diagnosisSection{
+        width: 500px;
+        flex: 2;
+        height: auto;
+    }
+
+    .profileLabRes{
+        max-width: 280px;
+        flex: 3;
+    }
+
+    .profileInfo{
+        height: auto;
+    }
+
+    .navLinks{
+        display: none;
+    }
+
+    .drNav{
+        display: none;
+    }
+
+    .hamburger-menu {
+        display: block;
+    }
+    .hamburger{
+        display: block;
+       
+    }
+    .nav {
+        justify-content: space-between;
+        padding: 10px 20px;
+    }
+
+    .diagnosisHistory{
+        height: auto;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+    }
+
+    .diagnosisList{
+        margin-top: 20px;
+        height: auto;
+    }
+
+    .listpat{
+    
+        height: fit-content;
+        max-height: 500px;
+    }
+
+    .patientsList{
+        height: 600px;
+        max-height: 600px;
+    }
+}
+
+@media (max-width: 947px) {
+    .profileLabRes{
+        max-width: 100%;
+        width: 100vw;
+    }
+}
+
+@media (max-width: 810px) {
+    canvas{
+        padding: 0;
+        margin: auto;
+        max-width: 250px;
+    
+    }
+
+}
+
+
+@media (max-width: 630px) {
+
+    .patientsList{
+        max-width: 100%;
+        width: 100vw;
+    }
+
+    .diagnosisSection{
+        max-width: 100%;
+        width: 100vw;
+    }
+
+    .profileInfo{
+        max-width: 100%;
+        width: 100vw;
+    }
+
+    .graphic{
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .card{
+        width: 170px;
+        margin: 10px;
+    }
+
+    .basicInfo{
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 330px) {
+
+    canvas{
+        max-width: 100%;
+        width: 100%;
+    }
+    .graphic{
+        margin: auto;
+    }
+
+}
