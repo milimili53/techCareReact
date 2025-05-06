@@ -1,49 +1,79 @@
-import React, {useEffect, useState, useRef} from 'react'
+import React, {useEffect, useState, useRef, use} from 'react'
 import '../App.css'
-import { usePatients } from '../contexts/patientRequest' 
-import chartUpdating from '../chartUpdating'
+import { usePatients } from '../contexts/patientRequest'
 import { useSelectedPatient } from '../contexts/selectedPatientContext'
-import Chart from './Chart.js'
+import {Chart as ChartJS} from 'chart.js/auto';    
+import {Line} from 'react-chartjs-2';
 
 
 export const DiagnosisSection = () => {
 
     const patients = usePatients();
     const { selectedName, setSelectedName, selectedPatient } = useSelectedPatient();
+    const [showMenu, setShowMenu] = useState(false);
+    const [dataLength, setDataLength] = useState(6);
+    const [buttonText, setButtonText] = useState('Last 6 months');
 
-    
+   
     
     const[bloodPressureChart, setBloodPressureChart] = useState(null);
     const [diagnosisHistory, setDiagnosisHistory] = useState([]);
+    const [diagnosisList, setDiagnosisList] = useState([]);
     const [systolicValues, setSystolicValues] = useState([]);
     const [diastolicValues, setDiastolicValues] = useState([]);
-    const [chartValue, setChartValue] = useState(6);
     
     useEffect(() => {
   
-      setDiagnosisHistory(selectedPatient?.diagnosis_history);
-      setSystolicValues(selectedPatient?.diagnosis_history.map((diagnosis) => diagnosis.blood_pressure.systolic)); 
-      setDiastolicValues(selectedPatient?.diagnosis_history.map((diagnosis) => diagnosis.blood_pressure.diastolic));
+      setDiagnosisHistory(selectedPatient?.diagnosis_history.map((diagnosis) => {let date = diagnosis.month.substr(0,3) + ', ' + diagnosis.year; return date}));
+      setDiagnosisList(selectedPatient?.diagnostic_list);
+      setSystolicValues(selectedPatient?.diagnosis_history.map((diagnosis) => diagnosis.blood_pressure.systolic.value)); 
+      setDiastolicValues(selectedPatient?.diagnosis_history.map((diagnosis) => diagnosis.blood_pressure.diastolic.value));
       
       
     }, [selectedPatient])
     
     let latestDiagnosis = selectedPatient?.diagnosis_history[0];
+ 
 
-    
-/*
-    const check = (message) => {
-      if (message === "Lower than Average") {
-          return <img src="assets/ArrowDown.svg" alt="ArrowDown">Lower than Average</img>;
-      } else if (message === "Higher than Average") {
-          return <img src="assets/ArrowUp.svg" alt="ArrowUp" >Higher than Average</img>;
-      } else if (message === 'Normal') {
-          return `Normal`;
+console.log(systolicValues)
+console.log(diastolicValues);
+console.log(diagnosisHistory)
+
+
+const newData = {
+  labels: diagnosisHistory?.slice(0, dataLength),
+  datasets: [
+      {
+          label: "Systolic Pressure",
+          data: systolicValues?.slice(0, dataLength),
+          borderColor: '#C26EB4',
+          backgroundColor: "rgba(255, 99, 132, 0.2)",
+          borderWidth: 2,
+          pointRadius: 4,
+          pointBackgroundColor: '#E66FD2',
+          pointBorderWidth: 1,
+          pointBorderColor: '#fff',
+          tension: 0.4,
+      },
+      {
+          label: "Diastolic Pressure",
+          data: diastolicValues?.slice(0, dataLength),
+          borderColor: "#7E6CAB",
+          backgroundColor: "rgba(54, 162, 235, 0.2)",
+          borderWidth: 2,
+          pointRadius: 4,
+          pointBackgroundColor: '#8C6FE6',
+          pointBorderWidth: 1,
+          pointBorderColor: '#fff',
+          tension: 0.4,
       }
-  };
-*/
+  ]
+};
+
+
 
 /*////////////////////CHART///////////////////////
+
 
 function updateChart(selectedValue) {
   const dataLength = selectedValue === 'all' ? diagnosisHistory.length : parseInt(selectedValue);
@@ -166,35 +196,30 @@ const check = (message) => {
         <div className="chartHeader">
           <h2>Blood Pressure</h2>
           <div className="dropdown">
-            <button className="dropdown-button">
+            <button className="dropdown-button" onClick={() => setShowMenu(!showMenu)}>
               <h6 id="chartValue">
-                Last 6 months{" "}
+                {buttonText}{" "}
                 <img
                   src="assets/expand_more_FILL0_wght300_GRAD0_opsz24.svg"
                   alt="arrowDown"
                 />
               </h6>
             </button>
-            <div className="dropdown-menu">
-              <a href="#" data-value={6}>
+            <div className="dropdown-menu"  style={{display : showMenu ? 'block' : 'none'}} >
+              <a href="#" key={6} onClick={(event) => {setDataLength(6); setShowMenu(false); setButtonText(event.target.innerText)}}>
                 Last 6 months
               </a>
-              <a href="#" data-value={12}>
+              <a href="#" key={12} onClick={(event) => {setDataLength(12); setShowMenu(false); setButtonText(event.target.innerText)}}>
                 Last 12 months
               </a>
-              <a href="#" data-value="all">
+              <a href="#" key="all" onClick={(event) => {setDataLength(-1); setShowMenu(false); setButtonText(event.target.innerText)}}>
                 All time
               </a>
             </div>
           </div>
         </div>
-        {/*
-
-          <canvas id="bloodPressureChart" >
-            
-        </canvas>
-        */}
-        <Chart/>
+        
+        <Line data={newData} id='canvas'/>
       </div>
       <div className="infoPart">
         <div className="infoCard systolic">
@@ -204,7 +229,7 @@ const check = (message) => {
             </div>
             <h4>Systolic</h4>
           </div>
-          <h3 className="numSys"></h3>
+          <h3 className="numSys">{latestDiagnosis?.blood_pressure.systolic.value}</h3>
           <div className="center">
             <h5 id="sysStat" />
           </div>
@@ -216,7 +241,7 @@ const check = (message) => {
             </div>
             <h4>Diastolic</h4>
           </div>
-          <h3 className="numDia"></h3>
+          <h3 className="numDia">{latestDiagnosis?.blood_pressure.diastolic.value}</h3>
           <div className="center">
             <h5 id="diasStat" />
           </div>
@@ -265,7 +290,15 @@ const check = (message) => {
             <th>Status</th>
           </tr>
         </thead>
-        <tbody className="tableBody"></tbody>
+        <tbody className="tableBody">
+          {diagnosisList?.map((diagnosis, index) => (
+          <tr key={index}>
+            <td>{diagnosis?.name}</td>
+            <td>{diagnosis?.description}</td>
+            <td>{diagnosis?.status}</td>
+          </tr>
+          ))}
+        </tbody>
       </table>
     </div>
   </div>
